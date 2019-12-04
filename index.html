@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        const pushNum = (num) => {
+            const inputValue = document.getElementById("inputForm1").value;
+            document.getElementById("inputForm1").value = inputValue + num;
+        }
+
+        const calc_op = (op) => {
+            document.getElementById("input1").textContent = document.getElementById("inputForm1").value;
+            document.getElementById("inputForm1").value = 0;
+            document.getElementById("op").textContent = op;
+        }
+
+        const calc = () =>{
+            console.log("ok");
+            const num1 = document.getElementById("input1").textContent;
+            const num2 = document.getElementById("inputForm1").value;
+            const op = document.getElementById("op").textContent;
+            console.log(num1);
+            console.log(num2);
+            console.log(op);
+            let ans;
+            switch(op){
+                case '+':
+                    ans = Number(num1) + Number(num2);
+                    break;
+                case '−':
+                    ans = Number(num1) - Number(num2);
+                    break;
+                case '×':
+                    ans = Number(num1) * Number(num2);
+                    break;
+                case '÷':
+                    ans = Number(num1) / Number(num2);
+                    break;
+                default:
+                    break;
+            }
+            console.log(ans);
+            document.getElementById("input2").textContent= document.getElementById("inputForm1").value;
+            document.getElementById("Ans").textContent = ans;
+        }
+
+        const reset = () => {
+           document.getElementById("inputForm1").value = 0; 
+           document.getElementById("input1").textContent = ""; 
+           document.getElementById("input2").textContent = ""; 
+           document.getElementById("op").textContent = ""; 
+           document.getElementById("Ans").textContent = ""; 
+        }
+    </script>
+</head>
+<body>
+    <input id="inputForm1" value=0>
+
+    <div>
+        <div>
+            <button onclick="pushNum(1)">1</button> 
+            <button onclick="pushNum(2)">2</button> 
+            <button onclick="pushNum(3)">3</button> 
+        </div>
+        <div>
+            <button onclick="pushNum(4)">4</button> 
+            <button onclick="pushNum(5)">5</button> 
+            <button onclick="pushNum(6)">6</button> 
+        </div>
+        <div>
+            <button onclick="pushNum(7)">7</button> 
+            <button onclick="pushNum(8)">8</button> 
+            <button onclick="pushNum(9)">9</button> 
+        </div>
+        <button onclick="pushNum(0)">0</button> 
+        <button onclick="reset()">reset</button> 
+    <div>
+        <button onclick="calc_op('+')">+</button> 
+        <button onclick="calc_op('−')">−</button> 
+        <button onclick="calc_op('×')">×</button> 
+        <button onclick="calc_op('÷')">÷</button> 
+    </div>
+        <button onclick="calc()">=</button> 
+    <p>1:<span id="input1"></span></p>
+    <p>op : <span id="op"></span></p>
+    <p><span></span>2:<span id="input2"></span></p>
+    <p>=<span id="Ans"></span></p>
+</body>
+</html>
